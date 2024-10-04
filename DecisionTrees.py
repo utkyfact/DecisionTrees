@@ -2,10 +2,6 @@
 # coding: utf-8
 
 # # Decison Tree Classification
-# 
-# Bu kursumuzda Decision Trees ile Sınıflandırma Yapmayı Öğreneceğiz
-
-# İlk olarak verilerimizi yüklüyoruz ve kütüphaneleirmizi import ediyoruz.
 
 # In[ ]:
 
@@ -23,9 +19,6 @@ df = pd.read_csv("DecisionTreesClassificationDataSet.csv")
 df.head()
 
 
-# 
-# scikit-learn kütüphanesi decision tree'lerin düzgün çalışması için herşeyin rakamlsal olmasını bekliyor bu nedenle veri setimizdeki tüm Y ve N değerlerini 0 ve 1 olarak düzeltiyoruz. Aynı sebeple eğitim seviyesini de BS:0 MS:1 ve PhD:2 olarak güncelliyoruz. map() kullanarak boş hücreler veya geçersiz değer girilen hücreler NaN ile doldurulacaktır, buna şuandaki veri setimizde ihtiyacıkız yok ama sizin ilerde yoğun veri ile çalıştığınız zaman ihtiyacınız olacaktır.
-# 
 
 # In[ ]:
 
@@ -41,7 +34,6 @@ df['Egitim Seviyesi'] = df['Egitim Seviyesi'].map(duzetme_mapping_egitim)
 df.head()
 
 
-# Sonuc sütununu ayırıyoruz:
 
 # In[ ]:
 
@@ -57,7 +49,6 @@ X = df.drop(['IseAlindi'], axis=1)
 X.head()
 
 
-# Decision Tree'mizi oluşturuyoruz:
 
 # In[ ]:
 
@@ -70,16 +61,13 @@ clf = clf.fit(X,y)
 
 
 
-# Prediction yapalım şimdi
-# 5 yıl deneyimli, hazlihazırda bir yerde çalışan ve 3 eski şirkette çalışmış olan, eğitim seviyesi Lisans
-# top-tier-school mezunu değil
+
 print (clf.predict([[5, 1, 3, 0, 0, 0]]))
 
 
 # In[ ]:
 
 
-# Toplam 2 yıllık iş deneyimi, 7 kez iş değiştirmiş çok iyi bir okul mezunu şuan çalışmıyor
 print (clf.predict([[2, 0, 7, 0, 1, 0]]))
 
 
@@ -92,7 +80,6 @@ print (clf.predict([[2, 0, 7, 0, 1, 0]]))
 # In[ ]:
 
 
-# Toplam 2 yıllık iş deneyimi, 7 kez iş değiştirmiş çok iyi bir okul mezunu değil şuan çalışıyor
 print (clf.predict([[2, 1, 7, 0, 0, 0]]))
 
 
@@ -105,7 +92,6 @@ print (clf.predict([[2, 1, 7, 0, 0, 0]]))
 # In[ ]:
 
 
-# Toplam 20 yıllık iş deneyimi, 5 kez iş değiştirmiş iyi bir okul mezunu şuan çalışmıyor
 print (clf.predict([[20, 0, 5, 1, 1, 1]]))
 
 
@@ -145,10 +131,6 @@ print (clf.predict([[20, 0, 5, 1, 1, 1]]))
 
 
 
-# ## Toplu Öğrenme: Random Forest
-
-# 20 tane decision tree birleşiminden oluşan bir Random Forest kullanarak tahmin yapacağız:
-# 
 
 # In[ ]:
 
